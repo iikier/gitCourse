@@ -1,1 +1,3 @@
+Git revert sample test
+
 This is Sample File 2
