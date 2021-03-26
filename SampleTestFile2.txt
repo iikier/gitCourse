@@ -2,3 +2,4 @@ Git revert sample test
 
 This is Sample File 2
 This is comparion lecture
+This is stash lecture, change in file 2
