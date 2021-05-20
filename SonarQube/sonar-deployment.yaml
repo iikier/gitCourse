@@ -5,10 +5,12 @@ metadata:
     app: sonarqube
   name: sonarqube
 spec:
+  replicas: 1
   selector:
     metadata:
       labels:
         app: sonarqube
+  template:
     spec:
       containers:
         - name: sonarqube
