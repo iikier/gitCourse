@@ -1,13 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: sonarqube
   name: sonarqube
 spec:
-  replicas: 1
   selector:
-      labels:
+      matchLabels:
         app: sonarqube
   template:
     spec:
