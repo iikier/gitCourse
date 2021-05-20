@@ -7,7 +7,6 @@ metadata:
 spec:
   replicas: 1
   selector:
-    metadata:
       labels:
         app: sonarqube
   template:
