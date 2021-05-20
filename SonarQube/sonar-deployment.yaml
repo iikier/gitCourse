@@ -4,8 +4,6 @@ metadata:
   name: sonarqube
 spec:
   selector:
-    matchLabels:
-      app: sonarqube
   template:
     metadata:
       labels:
