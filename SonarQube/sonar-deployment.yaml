@@ -12,40 +12,46 @@ spec:
   template:
     metadata:
       labels:
-        app: sonarqube
-    spec:
-      containers:
-        - name: sonarqube
-          image: latest
-          resources:
-            requests:
-              cpu: 500m
-              memory: 1024Mi
-            limits:
+        app: sonarqube  
+    spec: 
+      containers: 
+        - 
+          env: 
+            - 
+              name: SONARQUBE_JDBC_USERNAME
+              value: "medium@medium"
+            - 
+              name: SONARQUBE_JDBC_URL
+              value: "jdbc:postgresql://medium.postgres.database.azure.com/sonar"
+            - 
+              name: SONARQUBE_JDBC_PASSWORD
+              value: Raposa@2023$
+          image: "sonarqube:latest"
+          name: sonarqube-pod
+          ports: 
+            - 
+              containerPort: 9000
+              protocol: TCP
+          resources: 
+            limits: 
               cpu: 2000m
               memory: 2048Mi
-          volumeMounts:
-          - mountPath: "/opt/sonarqube/data/"
-            name: sonar-data
-          - mountPath: "/opt/sonarqube/extensions/"
-            name: sonar-extensions
-          env:
-          - name: "SONARQUBE_JDBC_USERNAME"
-            value: "ivanikier@hotmail.com"
-          - name: "SONARQUBE_JDBC_URL"
-            value: "jdbc:postgresql://medium.postgres.database.azure.com/sonar"
-          - name: "SONARQUBE_JDBC_PASSWORD"
-            valueFrom:
-              secretKeyRef:
-                name: postgres
-                key: password
-          ports:
-          - containerPort: 9000
-            protocol: TCP
-      volumes:
-      - name: sonar-data
-        persistentVolumeClaim:
-          claimName: sonar-data
-      - name: sonar-extensions
-        persistentVolumeClaim:
-          claimName: sonar-extensions
+            requests: 
+              cpu: 500m
+              memory: 1024Mi
+          volumeMounts: 
+            - 
+              mountPath: /opt/sonarqube/data/
+              name: sonarqube-data
+            - 
+              mountPath: /opt/sonarqube/extensions/
+              name: sonarqube-extensions
+      volumes: 
+        - 
+          name: sonarqube-data
+          persistentVolumeClaim: 
+            claimName: sonarqube-data
+        - 
+          name: sonarqube-extensions
+          persistentVolumeClaim: 
+            claimName: sonarqube-extensions
