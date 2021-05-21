@@ -48,10 +48,10 @@ spec:
               name: sonar-extensions
       volumes: 
         - 
-          name: sonarqube-data
+          name: sonar-data
           persistentVolumeClaim: 
             claimName: sonar-data
         - 
-          name: sonarqube-extensions
+          name: sonar-extensions
           persistentVolumeClaim: 
             claimName: sonar-extensions
